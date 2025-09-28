@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fe-pv
+  labels:
+    app: lms-fe
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: fe-storage
+  hostPath:                        # For local/dev only
+    path: "/mnt/data/frontend"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fe-pvc
+  labels:
+    app: lms-fe
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fe-storage
+  resources:
+    requests:
+      storage: 1Gi

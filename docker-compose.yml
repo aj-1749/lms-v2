@@ -1,4 +1,4 @@
-i# Docker compose start container with env variables
+# Docker compose start container with env variables
 services:
   local-db:
     image: postgres
@@ -36,5 +36,5 @@ services:
       - "80:80"
     depends_on:
       - api-server
-# volumes:
-#   local-db-data: # uncomment to persist data using named volume
+volumes:
+  local-db-data: # uncomment to persist data using named volume
